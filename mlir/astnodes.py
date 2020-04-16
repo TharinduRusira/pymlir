@@ -633,9 +633,6 @@ class Module(Node):
             self.body = [node]
             self.location = None
         else:
-            if not hasattr(node, 'len'):
-                node = [node]
-
             if len(node) > index and isinstance(node[index], SymbolRefId):
                 self.name = node[index]
                 index += 1
