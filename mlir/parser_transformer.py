@@ -161,6 +161,7 @@ class TreeToMlir(Transformer):
     semi_affine_map_def = astnodes.SemiAffineMapDef
     integer_set_def = astnodes.IntSetDef
     attribute_alias_def = astnodes.AttrAliasDef
+    hoisted_affine_map_def = astnodes.HoistedAffineMapDef
 
     ###############################################################
     # List types

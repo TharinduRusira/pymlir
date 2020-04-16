@@ -46,6 +46,7 @@ type_alias     : "!" (string_literal | bare_id)
 map_or_set_id : "#" suffix_id
 attribute_alias : "#" (string_literal | bare_id)
 
+
 ssa_id_list : ssa_id ("," ssa_id)*
 
 // Uses of an SSA value, e.g., in an operand list to an operation.
@@ -269,7 +270,9 @@ affine_map_def      : map_or_set_id "=" affine_map_inline
 semi_affine_map_def : map_or_set_id "=" semi_affine_map_inline
 integer_set_def     : map_or_set_id "=" integer_set_inline
 attribute_alias_def : attribute_alias "=" attribute_value
-?definition : type_alias_def | affine_map_def | semi_affine_map_def | integer_set_def | attribute_alias_def
+hoisted_affine_map_def : map_or_set_id "=" "affine_map" "<" affine_map ">"
+
+?definition : type_alias_def | affine_map_def | semi_affine_map_def | integer_set_def | attribute_alias_def | hoisted_affine_map_def
 
 ?start : value*
 ?value : module

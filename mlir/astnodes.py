@@ -633,6 +633,9 @@ class Module(Node):
             self.body = [node]
             self.location = None
         else:
+            if not hasattr(node, 'len'):
+                node = [node]
+
             if len(node) > index and isinstance(node[index], SymbolRefId):
                 self.name = node[index]
                 index += 1
@@ -998,6 +1001,14 @@ class SemiAffineMapDef(Definition):
 class IntSetDef(Definition):
     pass
 
+
+class HoistedAffineMapDef(Definition):
+    """
+    a parent node type for hoisted affine map definitions of syntax
+    #MapOrSetId = affine_map<AffineMap>
+    """
+    #can override dump function if necessary
+    pass
 
 ##############################################################################
 # Helpers
